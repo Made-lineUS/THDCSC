@@ -14,9 +14,11 @@
     }
 	 #imagen-container {
       background: url('https://bpando.org//wp-content/uploads//2011/03/hd01.jpg') no-repeat center;
-      background-size: cover; /* Ajusta el tamaño de la imagen para cubrir completamente el contenedor */
-      width: 50%; /* Ajusta el ancho del contenedor */
-      height: 50vh; /* Ajusta la altura del contenedor según tus necesidades */
+      background-size: contain; /* Cambiado a 'contain' para que la imagen se ajuste completamente dentro del contenedor */
+      width: 80%; /* Ajusta el ancho del contenedor al 80% del ancho del padre (puedes cambiar el valor según tus preferencias) */
+      height: auto; /* Establecido 'auto' para mantener la proporción de la imagen */
+      max-height: 300px; /* Establece una altura máxima para evitar que el contenedor se haga demasiado alto */
+      margin: 0 auto; /* Centra el contenedor horizontalmente */
      /* ...otros estilos... */
       
     }
