@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THD COMM SCORE CALCULATOR</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4; /* Cambiado a verde claro */
+      text-align: center;
+      margin: 0; /* Eliminar el margen predeterminado del cuerpo */
+      padding: 0; /* Eliminar el relleno predeterminado del cuerpo */
+    }
+	 #imagen-container {
+      background: url('C:/Users/Alexander Ruano/Desktop/154720-home-depot-logo-hd-image-free.png') no-repeat center;
+      background-size: contain; /* Ajustar el tamaño de la imagen */
+      padding: 40px; /* Aumentar el espacio alrededor del texto */
+      margin: 0; /* Eliminar el margen predeterminado del encabezado */
+      
+    }
+	 #titulo-container {
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+	     }
+
+   
+    label {
+      display: block;
+      margin: 10px 0;
+      color: #555;
+    }
+
+    input {
+      padding: 8px;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4caf50;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+	  
+    }
+	
+	
+  </style>
+</head>
+<body>
+
+  <div id="imagen-container">
+    <!-- Contenedor de la imagen -->
+  </div>
+
+  <div id="titulo-container">
+    <!-- Contenedor del título -->
+    <h1>THD COMM SCORE</h1>
+
+    <label for="inputHoras">Hours:</label>
+    <input type="text" id="inputHoras" placeholder="Formato: HH:mm" oninput="formatoHora(this)" maxlength="5" required>
+
+    <button onclick="restar90Minutos()">Convert</button>
+
+    <p id="resultado"></p>
+  </div>
+
+  <script>
+    function formatoHora(input) {
+      // Obtener el valor actual del input
+      var valor = input.value;
+
+      // Eliminar caracteres no permitidos
+      valor = valor.replace(/[^\d:]/g, '');
+
+      // Agregar automáticamente los dos puntos
+      if (valor.length === 2 && !valor.includes(':')) {
+        valor = valor.substring(0, 2) + ':';
+      }
+
+      // Actualizar el valor del input
+      input.value = valor;
+    }
+
+    function restar90Minutos() {
+      // Obtener el valor de las horas desde el input
+      var inputHoras = document.getElementById("inputHoras").value;
+
+      // Convertir el valor de las horas a minutos y restar 90 minutos
+      var totalMinutos = parseInt(inputHoras.split(":")[0]) * 60 + parseInt(inputHoras.split(":")[1]) - 90;
+
+      // Calcular las nuevas horas y minutos
+      var nuevasHoras = Math.floor(totalMinutos / 60);
+      var nuevosMinutos = totalMinutos % 60;
+
+      // Mostrar el resultado
+      document.getElementById("resultado").innerText = "Resulting Time: " + nuevasHoras + ":" + (nuevosMinutos < 10 ? "0" : "") + nuevosMinutos;
+    }
+  </script>
+
+</body>
+</html>
